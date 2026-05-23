@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended Website</title>
+    <link rel="stylesheet" href="style.css"/>
+    </head>
+<body>
+
+    <!-- Dark Mode Button -->
+    <button id="toggleBtn" class="toggle-btn" onclick="toggleDarkMode()">
+    Dark Mode
+    </button>
+
+    <!-- Sticky Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h1>Image Gallery</h1>
+
+    <!-- Image Gallery -->
+    <section class="gallery">
+        <img src="https://picsum.photos/id/1015/500/300" alt="Nature Image">
+        <img src="https://picsum.photos/id/1026/500/300" alt="Dog Image">
+        <img src="https://picsum.photos/id/1035/500/300" alt="Mountain Image">
+        <img src="https://picsum.photos/id/1045/500/300" alt="Beach Image">
+    </section>
+
+    <h1>Contact Form</h1>
+
+    <!-- Form -->
+    <div class="form-container">
+        <form id="myForm">
+            <input type="text" id="name" placeholder="Enter Name" required>
+
+            <input type="email" id="email" placeholder="Enter Email" required>
+
+            <!-- Phone Number Field -->
+            <input type="text" id="phone" placeholder="Enter Phone Number" required>
+
+            <button type="submit">Submit</button>
+
+            <p id="error"></p>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

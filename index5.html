@@ -1,0 +1,208 @@
+<!-- Day-7 -->
+<!-- Assignments -->
+<!-- Create an array of numbers and return only even numbers using filter(). -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Even Numbers</title>
+</head>
+<body>
+
+    <h2>Find Even Numbers Using filter()</h2>
+
+    <label>Enter numbers separated by commas:</label><br><br>
+
+    <input type="text" id="numbersInput" placeholder="Example: 1,2,3,4,5,6">
+    
+    <button onclick="findEvenNumbers()">Show Even Numbers</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function findEvenNumbers() {
+            // Get input value
+            let input = document.getElementById("numbersInput").value;
+
+            // Convert string into array of numbers
+            let numbersArray = input.split(",").map(Number);
+
+            // Filter even numbers
+            let evenNumbers = numbersArray.filter(function(num) {
+                return num % 2 === 0;
+            });
+
+            // Display result
+            document.getElementById("result").innerHTML =
+                "Even Numbers: " + evenNumbers.join(", ");
+        }
+    </script>
+
+</body>
+</html> -->
+
+<!-- Build an object Laptop with properties: brand, ram, price. Add a method details(). -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Laptop Object</title>
+</head>
+<body>
+
+    <h2>Laptop Details</h2>
+
+    <button onclick="showDetails()">Show Laptop Details</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        // Creating Laptop object
+        const Laptop = {
+            brand: "Dell",
+            ram: "16GB",
+            price: 65000,
+
+            // Method
+            details: function() {
+                return "Brand: " + this.brand +
+                       "<br>RAM: " + this.ram +
+                       "<br>Price: ₹" + this.price;
+            }
+        };
+
+        // Function to display details
+        function showDetails() {
+            document.getElementById("result").innerHTML = Laptop.details();
+        }
+    </script>
+
+</body>
+</html> -->
+
+<!-- Write a program that takes an array of marks and prints highest, lowest, and average. -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Analysis</title>
+</head>
+<body>
+
+    <h2>Highest, Lowest, and Average Marks</h2>
+
+    <label>Enter marks separated by commas:</label><br><br>
+
+    <input type="text" id="marksInput" placeholder="Example: 78,85,90,67,88">
+
+    <button onclick="analyzeMarks()">Analyze</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function analyzeMarks() {
+
+            // Get input
+            let input = document.getElementById("marksInput").value;
+
+            // Convert input into array
+            let marks = input.split(",").map(Number);
+
+            // Find highest mark
+            let highest = Math.max(...marks);
+
+            // Find lowest mark
+            let lowest = Math.min(...marks);
+
+            // Calculate average
+            let sum = marks.reduce(function(total, mark) {
+                return total + mark;
+            }, 0);
+
+            let average = sum / marks.length;
+
+            // Display result
+            document.getElementById("result").innerHTML =
+                "Highest Marks: " + highest + "<br>" +
+                "Lowest Marks: " + lowest + "<br>" +
+                "Average Marks: " + average.toFixed(2);
+        }
+    </script>
+
+</body>
+</html> -->
+
+<!-- Extend the Student Records App: Add a function addStudent() that takes user input. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Records App</title>
+</head>
+<body>
+
+    <h2>Student Records App</h2>
+
+    <label>Student Name:</label>
+    <input type="text" id="studentName" placeholder="Enter name"><br><br>
+
+    <label>Student Marks:</label>
+    <input type="number" id="studentMarks" placeholder="Enter marks"><br><br>
+
+    <button onclick="addStudent()">Add Student</button>
+
+    <h3>Student Records:</h3>
+    <ul id="studentList"></ul>
+
+    <script>
+        // Array to store students
+        let students = [];
+
+        // Function to add student
+        function addStudent() {
+
+            // Get input values
+            let name = document.getElementById("studentName").value;
+            let marks = document.getElementById("studentMarks").value;
+
+            // Create student object
+            let student = {
+                name: name,
+                marks: marks
+            };
+
+            // Add object to array
+            students.push(student);
+
+            // Display students
+            displayStudents();
+
+            // Clear input fields
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentMarks").value = "";
+        }
+
+        // Function to display students
+        function displayStudents() {
+
+            let list = document.getElementById("studentList");
+
+            // Clear old list
+            list.innerHTML = "";
+
+            // Loop through students array
+            students.forEach(function(student, index) {
+
+                let li = document.createElement("li");
+
+                li.innerHTML =
+                    "Student " + (index + 1) +
+                    " → Name: " + student.name +
+                    ", Marks: " + student.marks;
+
+                list.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>

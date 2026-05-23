@@ -1,0 +1,146 @@
+<!-- Day-5 -->
+ <!-- Q1. Write a function factorial(n) that returns the factorial of a number. -->
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <title>Day-5</title>
+    </head>
+    <body>
+        <h1>Factorial of number</h1>
+        <form>
+            Enter the number:<input type="number" id="num" placeholder="Enter the number"/>
+            <button type="button" onclick="FactorialCheck()">Submit</button>
+        </form>
+        <p id="output"></p>
+    </body>
+    <script>
+        function FactorialCheck(){
+            const number = parseInt(document.getElementById("num").value);
+            let out = document.getElementById("output");
+
+            let fact = 1;
+
+            for(let i = 1; i <= number; i++){
+                fact = fact * i;
+            }
+
+            out.innerText = "Factorial = " + fact;
+        }
+    </script>
+</html> -->
+
+<!-- Q2. Build a function reverseString(str) that returns the reversed string. -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse String</title>
+</head>
+<body>
+    <h1>Reverse a String</h1>
+
+    <input type="text" id="inputStr" placeholder="Enter text here">
+    <button type="button" onclick="reverseString()">Reverse</button>
+
+    <p id="output"></p>
+
+    <script>
+        function reverseString() {
+            const str = document.getElementById("inputStr").value;
+            const reversed = str.split('').reverse().join('');
+            document.getElementById("output").innerText = "Reversed: " + reversed;
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- Q3. Create a function isPalindrome(str) to check if a string reads the same backward. -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <h1>Check Palindrome</h1>
+
+    <input type="text" id="inputStr" placeholder="Enter text">
+    <button type="button" onclick="checkPalindrome()">Check</button>
+
+    <p id="output"></p>
+
+    <script>
+        function isPalindrome(str) {
+            // Normalize: remove spaces & make lowercase
+            str = str.toLowerCase().replace(/\s/g, '');
+
+            let reversed = str.split('').reverse().join('');
+            return str === reversed;
+        }
+
+        function checkPalindrome() {
+            const input = document.getElementById("inputStr").value;
+            const result = isPalindrome(input);
+
+            document.getElementById("output").innerText =
+                result ? "It is a Palindrome" : "Not a Palindrome";
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!-- Q4. Extend the To-Do List project: Add a function to mark a task as completed. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button type="button" onclick="addTask()">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            const input = document.getElementById("taskInput");
+            const taskText = input.value.trim();
+
+            if (taskText === "") return;
+
+            const li = document.createElement("li");
+            li.innerText = taskText;
+
+            // Create Complete button
+            const btn = document.createElement("button");
+            btn.innerText = "✔";
+            btn.style.marginLeft = "10px";
+
+            // Attach function
+            btn.onclick = function () {
+                toggleComplete(li);
+            };
+
+            li.appendChild(btn);
+            document.getElementById("taskList").appendChild(li);
+
+            input.value = "";
+        }
+
+        function toggleComplete(taskElement) {
+            taskElement.classList.toggle("completed");
+        }
+    </script>
+</body>
+</html>

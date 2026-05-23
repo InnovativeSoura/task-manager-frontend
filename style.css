@@ -1,0 +1,170 @@
+*{
+    margin: o;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Aria, sans-serief;
+}
+
+body {
+    line-height: 2.0;
+}
+
+#header {
+    background: #333;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    background: #000;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00adb5;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #00adb5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #007b80;
+}
+
+/* SERVICES */
+.services {
+    padding: 40px 20px;
+}
+
+.service-container {
+    display: flex;
+    gap: 20px;
+}
+
+.service-box {
+    flex: 1;
+    background: #eee;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+}
+
+/* HERO */
+.Portfolio {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f4f4f4;
+}
+
+.Portfolio h2 {
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #00adb5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #007b80;
+}
+
+/* SERVICES */
+.services {
+  padding: 40px 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-container {
+  display: flex;
+  gap: 20px;
+}
+
+.service-box {
+  flex: 1;
+  background: #eee;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+}
+
+/* FOOTER */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* RESPONSIVE DESIGN */
+/* TABLET */
+@media (max-width: 768px) {
+    .service-container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 40px 10px;
+    }
+
+    header h1 {
+        margin-bottom: 10px;
+    }
+}

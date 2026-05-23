@@ -1,0 +1,29 @@
+<!-- Add an age field to users and filter /users/adults (age ≥ 18). -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Search</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>User Search</h1>
+
+    <input type="text" id="nameInput" placeholder="Enter user name">
+
+    <button onclick="searchUser()">Search User</button>
+
+    <button onclick="showAdults()">Show Adults</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

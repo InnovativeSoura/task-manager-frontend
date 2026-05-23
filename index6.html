@@ -1,0 +1,230 @@
+<!-- day-8 -->
+<!-- Assignments -->
+<!-- Write a script that fetches posts from https://jsonplaceholder.typicode.com/posts and prints the first 5 titles. -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Posts</title>
+</head>
+<body>
+
+    <h2>First 5 Post Titles</h2>
+
+    <button onclick="fetchPosts()">Load Posts</button>
+
+    <ul id="postList"></ul>
+
+    <script>
+        async function fetchPosts() {
+
+            // Fetch data from API
+            let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+            // Convert response to JSON
+            let posts = await response.json();
+
+            // Get first 5 posts
+            let firstFive = posts.slice(0, 5);
+
+            // Select UL element
+            let postList = document.getElementById("postList");
+
+            // Clear previous data
+            postList.innerHTML = "";
+
+            // Display titles
+            firstFive.forEach(function(post) {
+
+                let li = document.createElement("li");
+
+                li.innerHTML = post.title;
+
+                postList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html> -->
+
+<!-- Create a function simulateDownload(file) that returns a promise and resolves after random time (1–5s). Use awaitto download 3 files in sequence. -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Download Simulation</title>
+</head>
+
+<body>
+
+    <h1>File Download Simulation</h1>
+
+    <button onclick="startDownload()">
+        Start Download
+    </button>
+
+    <div id="output"></div>
+
+    <script>
+
+        // Function returning a Promise
+        function simulateDownload(file) {
+
+            return new Promise((resolve) => {
+
+                // Random time between 1–5 seconds
+                const time = Math.floor(Math.random() * 5000) + 1000;
+
+                setTimeout(() => {
+
+                    resolve(file + " downloaded in " + (time / 1000).toFixed(2) + " seconds");
+
+                }, time);
+
+            });
+
+        }
+
+        // Async function
+        async function startDownload() {
+
+            let output = document.getElementById("output");
+
+            output.innerHTML = "<p>Downloading started...</p>";
+
+            let file1 = await simulateDownload("File 1");
+            output.innerHTML += "<p>" + file1 + "</p>";
+
+            let file2 = await simulateDownload("File 2");
+            output.innerHTML += "<p>" + file2 + "</p>";
+
+            let file3 = await simulateDownload("File 3");
+            output.innerHTML += "<p>" + file3 + "</p>";
+
+            output.innerHTML += "<p><b>All files downloaded successfully!</b></p>";
+        }
+
+    </script>
+
+</body>
+</html> -->
+
+<!-- Extend the Fake API Project: Display data on a webpage instead of console (use DOM). -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Fake API Data Display</title>
+</head>
+
+<body>
+
+    <h1>Posts from Fake API</h1>
+
+    <button onclick="getPosts()">
+        Load Posts
+    </button>
+
+    <div id="output"></div>
+
+    <script>
+
+        async function getPosts() {
+
+            let output = document.getElementById("output");
+
+            output.innerHTML = "<p>Loading...</p>";
+
+            try {
+
+                // Fetch data from Fake API
+                let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+                let data = await response.json();
+
+                output.innerHTML = "";
+
+                // Display first 5 posts
+                for (let i = 0; i < 5; i++) {
+
+                    output.innerHTML += `
+                        <h3>${data[i].title}</h3>
+                        <p>${data[i].body}</p>
+                        <hr>
+                    `;
+                }
+
+            } 
+            
+            catch(error) {
+
+                output.innerHTML = "<p>Error loading data.</p>";
+            }
+        }
+
+    </script>
+
+</body>
+</html> -->
+
+<!-- Write an async function getWeather(city) that simulates fetching weather info with setTimeout. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Simulation</title>
+</head>
+
+<body>
+
+    <h1>Weather Information</h1>
+
+    <input type="text" id="city" placeholder="Enter city name">
+
+    <button onclick="showWeather()">
+        Get Weather
+    </button>
+
+    <div id="output"></div>
+
+    <script>
+
+        // Async function
+        async function getWeather(city) {
+
+            return new Promise((resolve) => {
+
+                // Simulate API delay
+                setTimeout(() => {
+
+                    let temperature = Math.floor(Math.random() * 15) + 20;
+
+                    resolve(
+                        "Weather in " + city + ": " +
+                        temperature + "°C, Sunny"
+                    );
+
+                }, 3000);
+
+            });
+
+        }
+
+        async function showWeather() {
+
+            let city = document.getElementById("city").value;
+
+            let output = document.getElementById("output");
+
+            output.innerHTML = "<p>Fetching weather data...</p>";
+
+            let result = await getWeather(city);
+
+            output.innerHTML = "<h3>" + result + "</h3>";
+        }
+
+    </script>
+
+</body>
+</html>

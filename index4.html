@@ -1,0 +1,284 @@
+<!-- Day-6 -->
+<!-- Assignment-1 -->
+<!-- Create a counter app with buttons + and – to increase/decrease a number. -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Counter App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        #counter {
+            font-size: 50px;
+            margin: 20px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .increase {
+            background-color: green;
+            color: white;
+        }
+
+        .decrease {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Counter App</h1>
+
+    <div id="counter">0</div>
+
+    <button class="decrease" onclick="decrease()">-</button>
+    <button class="increase" onclick="increase()">+</button>
+
+    <script>
+        let count = 0;
+
+        function increase() {
+            count++;
+            document.getElementById("counter").innerText = count;
+        }
+
+        function decrease() {
+            count--;
+            document.getElementById("counter").innerText = count;
+        }
+    </script>
+
+</body>
+</html> -->
+
+<!-- Assignment - 2 -->
+
+<!-- Build an image gallery: Clicking a thumbnail shows it in a larger view. -->
+
+<!-- <!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Large Image */
+        #mainImage {
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border: 3px solid #333;
+            margin-bottom: 20px;
+        }
+
+        /* Thumbnail container */
+        .thumbnails img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .thumbnails img:hover {
+            border: 2px solid #333;
+            transform: scale(1.05);
+        }
+
+        .active {
+            border: 2px solid blue !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Image Gallery</h1>
+    <img id="mainImage" src="https://picsum.photos/id/1015/400/250" alt="Main Image">
+
+    <div class="thumbnails">
+        <img src="https://picsum.photos/id/1015/100/70" onclick="changeImage(this)">
+        <img src="https://picsum.photos/id/1025/100/70" onclick="changeImage(this)">
+        <img src="https://picsum.photos/id/1035/100/70" onclick="changeImage(this)">
+        <img src="https://picsum.photos/id/1045/100/70" onclick="changeImage(this)">
+    </div>
+
+    <script>
+        function changeImage(element) {
+            // Change main image
+            let mainImage = document.getElementById("mainImage");
+            mainImage.src = element.src.replace("100/70", "400/250");
+
+            // Remove active class from all thumbnails
+            let thumbnails = document.querySelectorAll(".thumbnails img");
+            thumbnails.forEach(img => img.classList.remove("active"));
+
+            // Add active class to clicked image
+            element.classList.add("active");
+        }
+    </script>
+
+</body>
+</html> -->
+<!-- 
+Assignment - 3 -->
+<!-- Extend the To-Do List: Add a “Clear All” button. -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>To-Do List</h1>
+
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button onclick="addTask()">Add</button>
+    <button onclick="clearAll()">Clear All</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById("taskInput");
+            let taskText = input.value.trim();
+
+            if (taskText === "") return;
+
+            let li = document.createElement("li");
+            li.textContent = taskText;
+
+            document.getElementById("taskList").appendChild(li);
+
+            input.value = "";
+        }
+
+        function clearAll() {
+            document.getElementById("taskList").innerHTML = "";
+        }
+    </script>
+
+</body>
+</html> -->
+
+<!-- Assignment- 4 -->
+<!-- Create a live character counter for a text area (e.g., Twitter-style 280 characters). -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 120px;
+            padding: 10px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        #counter {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Live Character Counter</h1>
+
+    <textarea id="textInput" placeholder="Type something..."></textarea>
+    <div id="counter">0 / 280</div>
+
+    <script>
+        const textarea = document.getElementById("textInput");
+        const counter = document.getElementById("counter");
+        const maxLength = 280;
+
+        textarea.addEventListener("input", () => {
+            let length = textarea.value.length;
+
+            // Limit characters
+            if (length > maxLength) {
+                textarea.value = textarea.value.substring(0, maxLength);
+                length = maxLength;
+            }
+
+            counter.textContent = length + " / " + maxLength;
+
+            // Warning style
+            if (length > 250) {
+                counter.classList.add("warning");
+            } else {
+                counter.classList.remove("warning");
+            }
+        });
+    </script>
+
+</body>
+</html>
