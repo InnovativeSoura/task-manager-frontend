@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auth Frontend</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Authentication System</h1>
+
+  <div class="form-box">
+
+    <h2>Register</h2>
+
+    <input type="text" id="registerName" placeholder="Enter Name">
+
+    <input type="email" id="registerEmail" placeholder="Enter Email">
+
+    <input type="password" id="registerPassword" placeholder="Enter Password">
+
+    <button onclick="registerUser()">Register</button>
+
+  </div>
+
+  <div class="form-box">
+
+    <h2>Login</h2>
+
+    <input type="email" id="loginEmail" placeholder="Enter Email">
+
+    <input type="password" id="loginPassword" placeholder="Enter Password">
+
+    <button onclick="loginUser()">Login</button>
+
+  </div>
+
+  <div class="dashboard">
+    <h2>Dashboard</h2>
+
+    <p id="message"></p>
+
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
