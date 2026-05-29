@@ -25,4 +25,3 @@ function App() {
 }
 
 export default App;
-task-manager-frontend
