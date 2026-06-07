@@ -1,62 +1,86 @@
-import { useState, useContext } from "react";
-import { loginUser } from "../services/authService";
-import { AuthContext } from "../context/AuthContext";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { loginUser } from "../services/authService";
 
-const Login = () => {
+function Login() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const { setUser } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { email, password } = formData;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const data = await loginUser(formData);
-
-    if (data.token) {
-      localStorage.setItem("user", JSON.stringify(data));
-      setUser(data);
-      toast.success("Login Successful");
-      navigate("/dashboard");
-    } else {
-      toast.error(data.message);
-    }
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await loginUser({
+      email,
+      password,
+    });
+
+    localStorage.setItem("token", response.token);
+
+    alert("Login Successful!");
+
+    navigate("/dashboard");
+  } catch (error) {
+    console.error(error);
+
+    alert(
+      error?.response?.data?.message ||
+      "Login Failed"
+    );
+  }
+};
+
   return (
-    <div className="container">
-      <form className="form" onSubmit={handleSubmit}>
+    <div className="auth-container">
+      <div className="auth-card">
         <h2>Login</h2>
 
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
-          }
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
-        />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
 
-        <button>Login</button>
+          <button type="submit">
+            Login
+          </button>
+        </form>
 
         <p>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account?{" "}
+          <Link to="/register">
+            Register
+          </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
-};
+}
 
 export default Login;

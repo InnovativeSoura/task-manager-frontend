@@ -1,4 +1,4 @@
-const API_URL = "https://project-auth-api-vvvk.onrender.com";
+const API_URL = "http://localhost:5000";
 
 /* Register */
 

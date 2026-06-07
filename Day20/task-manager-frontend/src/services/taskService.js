@@ -1,46 +1,69 @@
-const API = import.meta.env.VITE_API_URL;
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const getTasks = async (token) => {
-  const res = await fetch(`${API}/api/tasks`, {
+  const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  });
+  };
 
-  return res.json();
+  const { data } = await axios.get(
+    `${API_URL}/api/tasks`,
+    config
+  );
+
+  return data;
 };
 
 export const createTask = async (task, token) => {
-  const res = await fetch(`${API}/api/tasks`, {
-    method: "POST",
+  const config = {
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(task),
-  });
+  };
 
-  return res.json();
+  const { data } = await axios.post(
+    `${API_URL}/api/tasks`,
+    task,
+    config
+  );
+
+  return data;
+};
+
+export const updateTask = async (
+  id,
+  task,
+  token
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const { data } = await axios.put(
+    `${API_URL}/api/tasks/${id}`,
+    task,
+    config
+  );
+
+  return data;
 };
 
 export const deleteTask = async (id, token) => {
-  await fetch(`${API}/api/tasks/${id}`, {
-    method: "DELETE",
+  const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  });
-};
+  };
 
-export const updateTask = async (id, task, token) => {
-  const res = await fetch(`${API}/api/tasks/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(task),
-  });
+  const { data } = await axios.delete(
+    `${API_URL}/api/tasks/${id}`,
+    config
+  );
 
-  return res.json();
+  return data;
 };

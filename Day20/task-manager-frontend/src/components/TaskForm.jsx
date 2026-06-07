@@ -4,7 +4,7 @@ const TaskForm = ({ addTask }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Work");
 
-  const handleSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
 
     addTask({
@@ -13,27 +13,29 @@ const TaskForm = ({ addTask }) => {
     });
 
     setTitle("");
+    setCategory("Work");
   };
 
   return (
-    <form className="task-form" onSubmit={handleSubmit}>
+    <form className="task-form" onSubmit={submitHandler}>
       <input
         type="text"
         placeholder="Enter Task"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
 
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       >
-        <option>Work</option>
-        <option>Personal</option>
-        <option>Urgent</option>
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Urgent">Urgent</option>
       </select>
 
-      <button>Add Task</button>
+      <button type="submit">Add</button>
     </form>
   );
 };

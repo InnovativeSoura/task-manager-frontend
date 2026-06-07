@@ -20,7 +20,6 @@ const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("All");
 
-  // Fetch Tasks
   const fetchTasks = async () => {
     const data = await getTasks(user.token);
 
@@ -36,7 +35,6 @@ const Dashboard = () => {
     fetchTasks();
   }, []);
 
-  // Add Task
   const addTask = async (task) => {
     await createTask(task, user.token);
 
@@ -45,7 +43,6 @@ const Dashboard = () => {
     fetchTasks();
   };
 
-  // Delete Task
   const removeTask = async (id) => {
     await deleteTask(id, user.token);
 
@@ -54,7 +51,6 @@ const Dashboard = () => {
     fetchTasks();
   };
 
-  // Edit Task
   const editTask = async (task) => {
     const newTitle = prompt("Edit Task", task.title);
 
@@ -74,7 +70,6 @@ const Dashboard = () => {
     }
   };
 
-  // Category Filter
   const filteredTasks =
     filter === "All"
       ? tasks
